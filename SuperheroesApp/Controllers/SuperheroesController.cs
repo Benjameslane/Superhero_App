@@ -33,6 +33,8 @@ namespace SuperheroesApp.Controllers
         // GET: SuperheroesController/Create
         public ActionResult Create()
         {
+          
+            
             return View();
         }
 
@@ -41,15 +43,18 @@ namespace SuperheroesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Superhero superhero)
         {
+
+            
+
             try
             {
+                
 
-                //
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(superhero);
             }
         }
 
@@ -83,7 +88,7 @@ namespace SuperheroesApp.Controllers
         // POST: SuperheroesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Superhero superhero)
         {
             try
             {
