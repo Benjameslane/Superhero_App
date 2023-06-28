@@ -44,18 +44,11 @@ namespace SuperheroesApp.Controllers
         public ActionResult Create(Superhero superhero)
         {
 
-            
+            _context.Superheroes.Add(superhero);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+           
 
-            try
-            {
-                
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View(superhero);
-            }
         }
 
         // GET: SuperheroesController/Edit/5
@@ -69,14 +62,11 @@ namespace SuperheroesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Superhero superhero)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _context.Superheroes.Update(superhero);
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index");
         }
 
         // GET: SuperheroesController/Delete/5
@@ -90,14 +80,10 @@ namespace SuperheroesApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Superhero superhero)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _context.Superheroes.Remove(superhero);
+
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
